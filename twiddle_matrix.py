@@ -62,6 +62,14 @@ def row_dft_collumn_factors(X, row_or_collumn):
     twiddle_code += ");"
     print(twiddle_code.replace(",\n();",");").replace("(,(","(("))
 
+def row_dft_collumn_factors_real(X, row_or_collumn): 
+    twiddle_code = f"\n\nCONSTANT {row_or_collumn}_matrix_values : {row_or_collumn.upper()}_MATRIX :=\n (("
+    for row in X:
+        for num in row:
+            twiddle_code += ",(" +str(round(num.real, 3))+ "," +str(round(num.imag, 3)) + ")"
+        twiddle_code += "),\n("
+    twiddle_code += ");"
+    print(twiddle_code.replace(",\n();",");").replace("(,(","(("))
 
 # Final method to compute the tf of the rows and collumns
 def row_or_collumn(N, row_or_collumn = "row"):
